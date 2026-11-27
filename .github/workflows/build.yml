@@ -33,7 +33,22 @@ jobs:
         run: dotnet build Source/theyaremany/theyaremany.slnx --configuration Release -p:ContinuousIntegrationBuild=true
 
       - name: Validate mod XML
-        run: find About Defs -name '*.xml' -print0 | xargs -0 -r xmllint --noout
+        run: |
+          python3 - <<'EOF'
+          import pathlib
+          import sys
+          import xml.etree.ElementTree as ET
+
+          bad = False
+          for base in ("About", "Defs"):
+              for p in pathlib.Path(base).rglob("*.xml"):
+                  try:
+                      ET.parse(p)
+                  except ET.ParseError as e:
+                      print(f"{p}: {e}")
+                      bad = True
+          sys.exit(1 if bad else 0)
+          EOF
 
       - name: Package
         run: |
