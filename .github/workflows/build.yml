@@ -58,7 +58,7 @@ jobs:
             sed -i "s|<modVersion>[^<]*</modVersion>|<modVersion>${GITHUB_REF_NAME}</modVersion>|" dist/theyaremany/About/About.xml
           fi
           cd dist
-          zip -r "../theyaremany-${GITHUB_REF_NAME}.zip" theyaremany
+          zip -r "theyaremany-${GITHUB_REF_NAME}.zip" theyaremany
 
       - uses: actions/upload-artifact@v4
         with:
