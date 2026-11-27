@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--
+    A direct relation vanilla never needed: clones of the same man. Sibling
+    and Kin are implied relations derived from shared parents, so they cannot
+    be attached directly (RenameGuildPawn used to try and only spam warnings).
+    This one is direct by design; Mod.cs links every clone to the master with
+    it. No death or lost thoughts: the guild already reacts to the master's
+    death through the final transmission, and pawns of a hostile faction are
+    not around to mourn.
+  -->
+
+  <PawnRelationDef>
+    <defName>TheyAreMany_VatSibling</defName>
+    <label>vat brother</label>
+    <labelFemale>vat sister</labelFemale>
+    <importance>185</importance>
+    <opinionOffset>20</opinionOffset>
+    <romanceChanceFactor>0.03</romanceChanceFactor>
+  </PawnRelationDef>
+
+</Defs>

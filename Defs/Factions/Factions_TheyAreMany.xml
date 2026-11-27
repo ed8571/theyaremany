@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--
+    Requires Odyssey (see About.xml). The guild's faction layerWhitelist pins it
+    to the Orbit layer only, so it can never exist or settle on the surface.
+    Every member is a clone of the selected guild persona: backstories, traits
+    and skills come from the persona (Mod.cs injects them before generation and
+    copies the leader's profile onto every clone), gender is pinned here, the
+    name is pinned in Mod.cs. Exactly one settlement is enforced by the
+    Harmony postfix in Mod.cs. The guild never trades and never negotiates, so
+    there are no Trader or Peaceful groups - a permanent-enemy faction would
+    never send them anyway.
+  -->
+
+  <PawnKindDef Name="TheyAreManyBase" ParentName="OutlanderBase" Abstract="True">
+    <label>clone</label>
+    <fixedGender>Male</fixedGender>
+    <backstoryCryptosleepCommonality>0</backstoryCryptosleepCommonality>
+    <minGenerationAge>20</minGenerationAge>
+    <maxGenerationAge>26</maxGenerationAge>
+    <apparelTags>
+      <li>IndustrialBasic</li>
+      <li>IndustrialAdvanced</li>
+      <li>IndustrialMilitaryBasic</li>
+      <li>IndustrialMilitaryAdvanced</li>
+    </apparelTags>
+    <weaponTags>
+      <li>Gun</li>
+      <li>GunHeavy</li>
+      <li>SpacerGun</li>
+    </weaponTags>
+    <techHediffsChance>0.05</techHediffsChance>
+    <techHediffsMoney>50~600</techHediffsMoney>
+    <techHediffsTags>
+      <li>Poor</li>
+      <li>Simple</li>
+    </techHediffsTags>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="TheyAreManyBase">
+    <defName>TheyAreMany_Clone</defName>
+    <label>clone</label>
+    <combatPower>75</combatPower>
+    <isFighter>true</isFighter>
+    <gearHealthRange>0.6~2</gearHealthRange>
+    <weaponMoney>150~350</weaponMoney>
+    <apparelMoney>200~500</apparelMoney>
+    <apparelAllowHeadgearChance>0.4</apparelAllowHeadgearChance>
+    <initialWillRange>1~3</initialWillRange>
+    <initialResistanceRange>10~18</initialResistanceRange>
+  </PawnKindDef>
+
+  <PawnKindDef ParentName="TheyAreManyBase">
+    <defName>TheyAreMany_TheMaster</defName>
+    <label>the master</label>
+    <factionLeader>true</factionLeader>
+    <combatPower>250</combatPower>
+    <isFighter>true</isFighter>
+    <minGenerationAge>45</minGenerationAge>
+    <maxGenerationAge>60</maxGenerationAge>
+    <chronologicalAgeRange>70~120</chronologicalAgeRange>
+    <gearHealthRange>1~1</gearHealthRange>
+    <itemQuality>Good</itemQuality>
+    <weaponMoney>300~600</weaponMoney>
+    <apparelMoney>600~1000</apparelMoney>
+    <initialWillRange>6~10</initialWillRange>
+    <initialResistanceRange>25~40</initialResistanceRange>
+  </PawnKindDef>
+
+  <FactionDef ParentName="OutlanderFactionBase">
+    <defName>TheyAreMany</defName>
+    <label>guild</label>
+    <description>A secretive guild that claims one patch of heaven-space and nothing more. The guild is built around a single lodge that serves as its home, armory, and staging ground.\n\nIts master is a man with an old, patient hatred - an enemy of your people from long before the guild bore a name. The facility he runs was dormant when he stumbled upon it by accident: drifting, uncharted, and utterly unexplained. Nobody knows how it came to hang in the dark, or who built it; he never asked. He woke it, and it has been answering him ever since - grown clones in days, each sharing his memories, his grudge, and his terrible aim, every one of them pointed at your colony.\n\nThe guild is barely a few years old, yet no two of its members have ever been seen apart, and no two have ever been seen. As far as outsiders can tell, every single one of them is the same man, wearing the same name.\n\nThe guild takes, and the guild does not negotiate.</description>
+    <pawnSingular>clone</pawnSingular>
+    <pawnsPlural>clones</pawnsPlural>
+    <categoryTag>TheyAreMany</categoryTag>
+    <listOrderPriority>35</listOrderPriority>
+    <settlementGenerationWeight>1</settlementGenerationWeight>
+    <requiredCountAtGameStart>1</requiredCountAtGameStart>
+    <maxConfigurableAtWorldCreation>1</maxConfigurableAtWorldCreation>
+    <configurationListOrderPriority>70</configurationListOrderPriority>
+    <permanentEnemy>true</permanentEnemy>
+    <canSiege>true</canSiege>
+    <canStageAttacks>true</canStageAttacks>
+    <techLevel>Archotech</techLevel>
+    <arrivalModeWhitelist>
+      <li>EdgeDrop</li>
+      <li>EdgeDropGroups</li>
+      <li>CenterDrop</li>
+    </arrivalModeWhitelist>
+    <leaderTitle>the master</leaderTitle>
+    <fixedLeaderKinds>
+      <li>TheyAreMany_TheMaster</li>
+    </fixedLeaderKinds>
+    <factionIconPath>World/WorldObjects/Expanding/PirateOutpost</factionIconPath>
+    <colorSpectrum>
+      <li>(0.55, 0.10, 0.10)</li>
+      <li>(0.85, 0.35, 0.20)</li>
+    </colorSpectrum>
+    <layerWhitelist>
+      <li>Orbit</li>
+    </layerWhitelist>
+    <pawnGroupMakers Inherit="False">
+      <li>
+        <kindDef>Combat</kindDef>
+        <options>
+          <TheyAreMany_Clone>10</TheyAreMany_Clone>
+        </options>
+      </li>
+      <li>
+        <kindDef>Settlement</kindDef>
+        <options>
+          <TheyAreMany_Clone>10</TheyAreMany_Clone>
+        </options>
+      </li>
+    </pawnGroupMakers>
+  </FactionDef>
+
+</Defs>

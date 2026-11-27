@@ -1,0 +1,35 @@
+<ModMetaData>
+	<name>theyaremany</name>
+	<author>anonymous</author>
+	<packageId>anonymous.theyaremany</packageId>
+	<modVersion>0.0.0</modVersion>
+	<supportedVersions>
+		<li>1.7</li>
+	</supportedVersions>
+	<description>A clone guild: one lodge in orbit, one grudge, and as many clones as it takes.
+
+Its master is an old enemy of your people. A few years ago, by blind luck, he stumbled upon a dormant cloning facility - nobody knows how it got there, or who built it - and woke it. Now the vats churn out adult clones of himself in days, each one carrying his memories, his training, and his terrible aim.
+
+Every member of the guild is the same man. He never expands, never trades, never negotiates. His clone raids arrive by drop pod, from the edge or the center of your colony, and they will not stop.</description>
+	<modDependencies>
+		<li>
+			<packageId>brrainz.harmony</packageId>
+			<displayName>Harmony</displayName>
+			<downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+			<steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+		</li>
+		<li>
+			<packageId>Ludeon.RimWorld.Biotech</packageId>
+			<displayName>RimWorld - Biotech</displayName>
+		</li>
+		<li>
+			<packageId>Ludeon.RimWorld.Odyssey</packageId>
+			<displayName>RimWorld - Odyssey</displayName>
+		</li>
+	</modDependencies>
+	<loadAfter>
+		<li>brrainz.harmony</li>
+		<li>Ludeon.RimWorld.Biotech</li>
+		<li>Ludeon.RimWorld.Odyssey</li>
+	</loadAfter>
+</ModMetaData>

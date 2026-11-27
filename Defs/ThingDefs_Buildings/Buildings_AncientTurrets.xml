@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- Ancient perimeter defenses of the cloning facility: self-loading
+       mechanoid-pattern emitters that never run dry and never sleep. Like the
+       cloning vats, they draw power from the facility's reactor - the same
+       one that beats in the master's chest. -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>TheyAreMany_AncientTurret</defName>
+    <label>ancient defense emitter</label>
+    <description>A squat, Mechanit-era defense emitter, its casing discoloured by uncounted years of service. A dumb, patient targeting brain scans lazily for movement; glyph script around the base marks the guarded halls of the facility as forbidden ground.\n\nLike the cloning vats it is fed by the facility's own ancient reactor, so it never needs barrels, fuel, or crews - only something worth shooting. And for as long as that reactor still beats, the facility casts a replacement for any emitter that falls.</description>
+    <thingClass>Building_TurretGun</thingClass>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <drawHighlight>true</drawHighlight>
+    <drawHighlightOnlyForHostile>true</drawHighlightOnlyForHostile>
+    <graphicData>
+      <texPath>Things/Building/Security/TurretMini_Base</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(0.58, 0.76, 0.82)</color>
+      <drawSize>(3,3)</drawSize>
+      <damageData>
+        <rect>(0.2,0.2,0.6,0.6)</rect>
+      </damageData>
+      <shadowData>
+        <volume>(0.27,0.25,0.27)</volume>
+        <offset>(0,0,0)</offset>
+      </shadowData>
+    </graphicData>
+    <altitudeLayer>Building</altitudeLayer>
+    <stealable>false</stealable>
+    <rotatable>false</rotatable>
+    <statBases>
+      <MaxHitPoints>600</MaxHitPoints>
+      <Flammability>0</Flammability>
+      <WorkToBuild>1800</WorkToBuild>
+      <Mass>20</Mass>
+      <Beauty>-15</Beauty>
+      <ShootingAccuracyTurret>0.96</ShootingAccuracyTurret>
+    </statBases>
+    <tickerType>Normal</tickerType>
+    <comps>
+      <li Class="CompProperties_Explosive">
+        <wickTicks>240</wickTicks>
+        <explosiveRadius>3.9</explosiveRadius>
+        <explosiveDamageType>Bomb</explosiveDamageType>
+        <chanceNeverExplodeFromDamage>0.5</chanceNeverExplodeFromDamage>
+      </li>
+      <li Class="CompProperties_Forbiddable"/>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>80</basePowerConsumption>
+        <showPowerNeededIfOff>false</showPowerNeededIfOff>
+      </li>
+      <li Class="CompProperties_Stunnable">
+        <affectedDamageDefs>
+          <li>Stun</li>
+          <li>EMP</li>
+        </affectedDamageDefs>
+      </li>
+    </comps>
+    <passability>PassThroughOnly</passability>
+    <pathCost>50</pathCost>
+    <fillPercent>0.4</fillPercent>
+    <hasTooltip>true</hasTooltip>
+    <designationCategory />
+    <building>
+      <combatPower>200</combatPower>
+      <ai_combatDangerous>true</ai_combatDangerous>
+      <deconstructible>false</deconstructible>
+      <turretGunDef>TheyAreMany_Gun_AncientTurret</turretGunDef>
+      <turretBurstCooldownTime>3.2</turretBurstCooldownTime>
+    </building>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseWeaponTurret">
+    <defName>TheyAreMany_Gun_AncientTurret</defName>
+    <label>ancient defense emitter gun</label>
+    <description>A self-repairing pulse emitter, mounted on an ancient defense turret.</description>
+    <graphicData>
+      <texPath>Things/Building/Security/TurretMini_Top</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(0.58, 0.76, 0.82)</color>
+    </graphicData>
+    <statBases>
+      <AccuracyTouch>0.77</AccuracyTouch>
+      <AccuracyShort>0.70</AccuracyShort>
+      <AccuracyMedium>0.50</AccuracyMedium>
+      <AccuracyLong>0.30</AccuracyLong>
+      <RangedWeapon_Cooldown>3.2</RangedWeapon_Cooldown>
+      <DeteriorationRate>0</DeteriorationRate>
+      <Mass>5</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <verbs>
+      <li>
+        <verbClass>Verb_Shoot</verbClass>
+        <defaultProjectile>TheyAreMany_Bullet_AncientTurret</defaultProjectile>
+        <warmupTime>0</warmupTime>
+        <range>30.9</range>
+        <ticksBetweenBurstShots>8</ticksBetweenBurstShots>
+        <burstShotCount>2</burstShotCount>
+        <soundCast>Shot_ChargeRifle</soundCast>
+        <soundCastTail>GunTail_Light</soundCastTail>
+        <muzzleFlashScale>9</muzzleFlashScale>
+      </li>
+    </verbs>
+  </ThingDef>
+
+  <ThingDef ParentName="BaseBullet">
+    <defName>TheyAreMany_Bullet_AncientTurret</defName>
+    <label>ancient emitter pulse</label>
+    <graphicData>
+      <texPath>Things/Projectile/Bullet_Small</texPath>
+      <graphicClass>Graphic_Single</graphicClass>
+      <color>(0.58, 0.76, 0.82)</color>
+    </graphicData>
+    <projectile>
+      <damageDef>Bullet</damageDef>
+      <damageAmountBase>14</damageAmountBase>
+      <armorPenetrationBase>0.30</armorPenetrationBase>
+      <speed>70</speed>
+    </projectile>
+  </ThingDef>
+
+</Defs>

@@ -1,0 +1,58 @@
+name: Build
+
+on:
+  push:
+    branches: [main, master]
+    tags: ['*.*.*']
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 11.x
+
+      - name: Build
+        run: dotnet build Source/theyaremany/theyaremany.slnx --configuration Release -p:ContinuousIntegrationBuild=true
+
+      - name: Validate mod XML
+        run: find About Defs -name '*.xml' -print0 | xargs -0 -r xmllint --noout
+
+      - name: Package
+        run: |
+          mkdir -p dist/theyaremany
+          cp -r About Defs Assemblies dist/theyaremany/
+          if [[ "$GITHUB_REF_TYPE" == "tag" ]]; then
+            sed -i "s|<modVersion>[^<]*</modVersion>|<modVersion>${GITHUB_REF_NAME}</modVersion>|" dist/theyaremany/About/About.xml
+          fi
+          cd dist
+          zip -r "../theyaremany-${GITHUB_REF_NAME}.zip" theyaremany
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: theyaremany-${{ github.run_id }}
+          path: dist/theyaremany-*.zip
+          if-no-files-found: error
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/') && github.ref_name =~ /^[0-9]+\.[0-9]+\.[0-9]+$/
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: theyaremany-${{ github.run_id }}
+          path: dist
+
+      - name: Create GitHub release
+        uses: softprops/action-ghrelease@v2
+        with:
+          files: dist/*.zip
+          generate_release_notes: true

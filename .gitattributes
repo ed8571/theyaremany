@@ -1,0 +1,8 @@
+# Normalize to LF in the repository; Windows checkouts convert per core.autocrlf.
+* text=auto
+
+# Runtime and generated files: never touch.
+*.dll -text
+
+# Must stay LF (CI runs these in bash on Linux).
+*.sh text eol=lf

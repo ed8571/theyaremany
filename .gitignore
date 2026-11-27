@@ -1,0 +1,12 @@
+# Build intermediates
+Source/**/[Bb]in/
+Source/**/[Oo]bj/
+Assemblies/theyaremany.dll
+
+# Rider / VS
+.idea/
+.vs/
+
+# OS
+Thumbs.db
+.DS_Store

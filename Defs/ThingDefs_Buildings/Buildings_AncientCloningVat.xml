@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!-- The cloning vats of the facility: standard growth vats of a design
+       far older than the Biotech-era units, still running on the station's ancient
+       reactor - the same one that beats in the master's chest. -->
+  <ThingDef ParentName="BuildingBase">
+    <defName>TheyAreMany_AncientCloningVat</defName>
+    <label>ancient cloning vat</label>
+    <description>A sarcophagus-sized growth vat, its casing discoloured by uncounted years of service. The mechanism inside is eerily similar to modern growth vats, but cruder, hungrier, and cased in tarnished, mechanoid-like plating. Glyphs of no known script run around its rim.\n\nThis station sat dormant longer than any record reaches - nobody knows how it came to drift here at all, or who built it. The vats only woke when the current master stumbled upon it a few years ago: now this is the cradle that produces the endless clones. For as long as the ancient reactor still beats in the master's chest, the facility casts new cradles in place of any that fall.\n\nLike a modern growth vat it can gestate an embryo or accelerate a child's growth while fed with nutrition, but this unit draws its power from the facility's own ancient reactor - the one the master carries.</description>
+    <thingClass>Building_GrowthVat</thingClass>
+    <containedPawnsSelectable>true</containedPawnsSelectable>
+    <tickerType>Normal</tickerType>
+    <graphicData>
+      <texPath>Things/Building/Misc/GrowthVat/GrowthVat</texPath>
+      <graphicClass>Graphic_Multi</graphicClass>
+      <color>(0.58, 0.76, 0.82)</color>
+      <drawSize>(1,2)</drawSize>
+      <shadowData>
+        <volume>(0.85, 0.3, 1.7)</volume>
+      </shadowData>
+    </graphicData>
+    <castEdgeShadows>true</castEdgeShadows>
+    <defaultPlacingRot>East</defaultPlacingRot>
+    <size>(1,2)</size>
+    <statBases>
+      <MaxHitPoints>800</MaxHitPoints>
+      <WorkToBuild>8000</WorkToBuild>
+      <Mass>30</Mass>
+      <Flammability>0</Flammability>
+    </statBases>
+    <costList>
+      <Steel>150</Steel>
+      <ComponentIndustrial>4</ComponentIndustrial>
+    </costList>
+    <altitudeLayer>Building</altitudeLayer>
+    <passability>PassThroughOnly</passability>
+    <pathCost>42</pathCost>
+    <blockWind>true</blockWind>
+    <drawerType>MapMeshAndRealTime</drawerType>
+    <fillPercent>0.5</fillPercent>
+    <canOverlapZones>false</canOverlapZones>
+    <designationCategory>Biotech</designationCategory>
+    <uiOrder>2201</uiOrder>
+    <hasInteractionCell>true</hasInteractionCell>
+    <interactionCellOffset>(0,0,-1)</interactionCellOffset>
+    <inspectorTabs>
+      <li>ITab_BiosculpterNutritionStorage</li>
+      <li>ITab_Genes</li>
+    </inspectorTabs>
+    <researchPrerequisites>
+      <li>GrowthVats</li>
+    </researchPrerequisites>
+    <building>
+      <ai_chillDestination>false</ai_chillDestination>
+      <haulToContainerDuration>120</haulToContainerDuration>
+      <deconstructible>false</deconstructible>
+      <workTableRoomRole>Laboratory</workTableRoomRole>
+      <buildingTags>
+        <li>Biotech</li>
+      </buildingTags>
+      <fixedStorageSettings>
+        <filter>
+          <categories>
+            <li>Foods</li>
+          </categories>
+          <specialFiltersToDisallow>
+            <li>AllowPlantFood</li>
+          </specialFiltersToDisallow>
+        </filter>
+      </fixedStorageSettings>
+      <defaultStorageSettings>
+        <filter>
+          <categories>
+            <li>Foods</li>
+          </categories>
+          <disallowedCategories>
+            <li>EggsFertilized</li>
+          </disallowedCategories>
+          <disallowedThingDefs>
+            <li>InsectJelly</li>
+            <li>MealLavish</li>
+            <li>MealLavish_Veg</li>
+            <li>MealLavish_Meat</li>
+            <li>HemogenPack</li>
+            <li>Chocolate</li>
+          </disallowedThingDefs>
+        </filter>
+      </defaultStorageSettings>
+    </building>
+    <constructionSkillPrerequisite>4</constructionSkillPrerequisite>
+    <comps>
+      <li Class="CompProperties_Power">
+        <compClass>CompPowerTrader</compClass>
+        <basePowerConsumption>200</basePowerConsumption>
+        <idlePowerDraw>80</idlePowerDraw>
+        <showPowerNeededIfOff>false</showPowerNeededIfOff>
+      </li>
+      <li Class="CompProperties_Glower">
+        <glowRadius>5</glowRadius>
+        <glowColor>(110, 190, 210, 0)</glowColor>
+      </li>
+    </comps>
+  </ThingDef>
+
+</Defs>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <!--
+    The clone childhood: no life before the vat, and memories that are not
+    really theirs. Never shuffled (shuffleable false) and never spawned by
+    name anywhere - only the clone path in Mod.cs assigns it. The adult
+    story is the selected persona's, so the floating title is overridden in
+    code with the "vat-grown clone" tag; skills are copied from the master
+    wholesale, so this story grants nothing and takes nothing away.
+  -->
+  <BackstoryDef>
+    <defName>TheyAreMany_VatGrown</defName>
+    <title>vat-grown clone</title>
+    <titleShort>vat clone</titleShort>
+    <description>[PAWN_nameDef]'s first memory is of waking inside warm nutrient fluid under humming glass. The body was full-grown and the hands were steady, but every recollection outside the vats belonged to someone else - a life [PAWN_nameDef] never lived, pressed into a growing mind. The vats do not raise children. They issue replacements.</description>
+    <slot>Childhood</slot>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <!--
+    The master's own stories, used when no persona with backstories is
+    selected: the childhood that fed the grudge, and the adulthood that
+    stumbled upon the dormant facility. Both are pinned by the clone path in
+    Mod.cs whenever the selected persona does not bring stories of its own.
+  -->
+  <BackstoryDef>
+    <defName>TheyAreMany_TheWronged</defName>
+    <title>the wronged</title>
+    <titleShort>wronged</titleShort>
+    <description>[PAWN_nameDef] was not born to the rim's wars, but [PAWN_nameDef] was broken by one - or by debt, or by betrayal; the telling changes every time it is told. What never changes is where the blame lands. Somewhere out there is a people who, fairly or not, owe [PAWN_nameDef] a debt, and it has been compounding ever since.</description>
+    <slot>Childhood</slot>
+    <skillGains>
+      <Intellectual>3</Intellectual>
+    </skillGains>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+  <BackstoryDef>
+    <defName>TheyAreMany_TheVatMaster</defName>
+    <title>master of the vats</title>
+    <titleShort>vat master</titleShort>
+    <description>A drifter at the rim's edge, [PAWN_nameDef] opened a hatch that appears on no chart and found the vats: dormant, dust-cloaked, older than any guild, built by nobody anyone can name. [PAWN_nameDef] did not ask where they came from. [PAWN_nameDef] woke them, taught them one face, and gave the growing army its single standing order - collect the debt, in full, from the people who owe it.</description>
+    <slot>Adulthood</slot>
+    <skillGains>
+      <Shooting>3</Shooting>
+      <Intellectual>4</Intellectual>
+    </skillGains>
+    <shuffleable>false</shuffleable>
+  </BackstoryDef>
+
+</Defs>
